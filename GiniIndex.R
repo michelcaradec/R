@@ -1,11 +1,24 @@
+#' ---
+#' title: "Gini Index and Lorenz Curve"
+#' author: "Michel Caradec"
+#' output: html_document
+#' date: ""
+#' ---
+
 library(ineq)
 
 getGini <- function(data)
 {
-  print(data)
-  Gini(data)
-  plot(Lc(data), col = "darkred", lwd = 2)
+  print(format(data, digits = 2))
+  plot(
+    Lc(data),
+    col = "darkred",
+    lwd = 2,
+    main = paste("Lorenz Curve - ", "Gini index = ", format(Gini(data), digits = 2))
+  )
 }
+
+# ----
 
 getGini(rep(1, 10))
 getGini(c(rep(1, 10), rep(2, 10)))
